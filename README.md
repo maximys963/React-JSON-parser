@@ -1,1 +1,1 @@
-# React-JSON-parser
+# Webpack-React-Redux-boilerplate
