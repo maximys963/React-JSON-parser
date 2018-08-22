@@ -7,7 +7,8 @@ function* fetchJsonData () {
     const response = yield fetch('http://dev.frevend.com/json/users.json');
     const json = yield response.json();
     const users =  json.users;
-    console.log(users)
+    console.log(users);
+    yield put({type: 'LOADED', payload: users});
 
 }
 

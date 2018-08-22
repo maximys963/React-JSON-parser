@@ -9,7 +9,10 @@ import rootSaga from './sagas/mainSaga'
 import { FETCH_REQUEST} from './actions/actions'
 
 export const initialState = {
+  fetchingStart: false,
   dataLoaded: false,
+  errors: '',
+  data: null,
 };
 
 const sagaMiddleware = createSagaMiddleware();
@@ -28,7 +31,9 @@ sagaMiddleware.run(rootSaga);
 store.dispatch({type: FETCH_REQUEST});
 
 
-
+store.subscribe( ()=>{
+    console.log(store.getState())
+});
 
 export default class App extends Component{
     render(){

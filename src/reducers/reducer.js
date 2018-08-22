@@ -6,7 +6,8 @@ export const mainReducer = (state=intialState, action) =>{
         case 'LOADED' :
             return{
                 ...state,
-                dataLoaded: true
+                dataLoaded: true,
+                data: action.payload,
             };
         default: return state
     }
