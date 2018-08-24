@@ -13,6 +13,7 @@ export const initialState = {
   dataLoaded: false,
   errors: '',
   data: null,
+  images: [],
 };
 
 const sagaMiddleware = createSagaMiddleware();

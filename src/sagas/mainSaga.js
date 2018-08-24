@@ -10,6 +10,7 @@ function* fetchJsonData () {
     console.log(users);
     yield put({type: 'LOADED', payload: users});
 
+
 }
 
  function* watchFetchData(){
