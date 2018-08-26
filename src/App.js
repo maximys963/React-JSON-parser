@@ -1,19 +1,22 @@
 import "regenerator-runtime/runtime";
 import React, {Component} from 'react'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import  createSagaMiddleware from 'redux-saga'
 import {mainReducer} from './reducers/reducer'
 import Parser from './components/parser'
 import rootSaga from './sagas/mainSaga'
 import { FETCH_REQUEST} from './actions/actions'
+import { Router, Route, browserHistory } from 'react-router'
+import { syncHistoryWithStore, routerReducer} from "react-router-redux"
 
 export const initialState = {
   fetchingStart: false,
   dataLoaded: false,
   errors: '',
   data: null,
-  images: [],
+  pageNumber: 0,
+
 };
 
 const sagaMiddleware = createSagaMiddleware();
@@ -27,6 +30,8 @@ export const store = createStore(
     )
 );
 
+
+// const history = syncHistoryWithStore(browserHistory, store);
 sagaMiddleware.run(rootSaga);
 
 store.dispatch({type: FETCH_REQUEST});
@@ -40,7 +45,7 @@ export default class App extends Component{
     render(){
        return(
            <Provider store={store}>
-              <Parser/>
+          <Parser/>
            </Provider>
        )
     }

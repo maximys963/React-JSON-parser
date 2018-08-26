@@ -9,6 +9,11 @@ export const mainReducer = (state=intialState, action) =>{
                 dataLoaded: true,
                 data: action.payload,
             };
+        case "PAGE_CLICK" :
+            return{
+                ...state,
+                pageNumber: action.payload
+            };
         default: return state
     }
 
